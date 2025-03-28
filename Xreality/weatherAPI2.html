@@ -6,64 +6,32 @@
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <style>
-      /* Weather Info Box (Fixed on Screen) */
-      #weather-info {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 15px;
-        border-radius: 8px;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        text-align: center;
-      }
-
-      #weather-info img {
-        width: 50px;
-        height: 50px;
-      }
-    </style>
   </head>
 
   <body>
-    <!-- On-screen Weather Info Box (Independent of AR) -->
-    <div id="weather-info">Fetching weather...</div>
 
     <a-scene
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <!-- AR Weather Box (Always in View) -->
-      <a-entity position="0 2 -4">
-        <a-plane
-          id="weather-box"
-          width="2"
-          height="1"
-          color="black"
-          opacity="0.7"
-        >
-          <a-text
-            id="weather-ar-text"
-            value="Loading Weather..."
-            align="center"
-            position="0 0 0.1"
-            color="white"
-          ></a-text>
-        </a-plane>
-      </a-entity>
+    <a-entity position="-3 3 -2">
+      <a-text
+        id="weather-ar-text"
+        value="Loading Weather..."
+        color="white"
+        align="center"
+        width="2"
+      ></a-text>
+    </a-entity>
 
       <!-- AR Text (Uses GPS) -->
       <a-text
-        id="weather-text"
-        value="Loading AR Data..."
+        value="Pontio PL5"
         color="red"
         backgroundColor="white"
         look-at="[gps-camera]"
         scale="50 50 50"
-        gps-entity-place="latitude: 53.2300660; longitude: -4.1212403;"
+        gps-entity-place="latitude: 53.2279201; longitude: -4.1301312;"
       ></a-text>
 
       <a-camera gps-camera rotation-reader gpsMinDistance="5"> </a-camera>
@@ -85,21 +53,6 @@
           const windSpeed = data.current.wind_kph;
           const iconUrl = "https:" + data.current.condition.icon;
 
-          // Update AR Text (Geo-based)
-          document.getElementById("weather-text").setAttribute(
-            "value",
-            `${location}: ${tempC}°C, ${condition}`
-          );
-
-          // Update On-screen Weather Info Box
-          document.getElementById("weather-info").innerHTML = `
-            <img src="${iconUrl}" alt="Weather Icon">
-            <p><strong>${location}</strong></p>
-            <p>${condition}, ${tempC}°C</p>
-            <p>Humidity: ${humidity}%</p>
-            <p>Wind: ${windSpeed} km/h</p>
-          `;
-
           // Update AR Weather Box
           document.getElementById("weather-ar-text").setAttribute(
             "value",
@@ -107,8 +60,6 @@
           );
         } catch (error) {
           console.error("Error fetching weather data:", error);
-          document.getElementById("weather-info").innerText =
-            "Failed to load weather data.";
           document.getElementById("weather-ar-text").setAttribute(
             "value",
             "Weather Data Unavailable"

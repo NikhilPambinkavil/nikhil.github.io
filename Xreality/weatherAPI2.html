@@ -17,17 +17,27 @@
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
       renderer="antialias: true; logarithmicDepthBuffer: true;"
     >
-      <!-- ✅ 2D Floating Weather Text (Dynamic Location, Latitude, Longitude, and Last Updated) -->
-      <a-entity position="0 1 -2" scale="1.5 1.5 1.5">
-        <a-text
-          id="weather-ar-text"
-          value="Fetching Weather..."
-          color="yellow"
-          align="center"
-          width="6"
-          look-at="[camera]"
-        ></a-text>
-      </a-entity>
+    <a-entity position="0 1.5 -3">
+      <a-text
+        id="weather-ar-text"
+        value="Fetching Weather..."
+        color="yellow"
+        align="center"
+        width="6"
+        look-at="[camera]"  <!-- Makes sure the text always faces the camera -->
+      ></a-text>
+    </a-entity>
+
+      <a-text
+      value="Pontio PL5"
+      color="red"
+      backgroundColor="white"
+      look-at="[gps-camera]"
+      scale="50 50 50"
+      gps-entity-place="latitude: 53.2279201; longitude: -4.1301312;"
+    ></a-text>
+
+    <a-camera gps-camera rotation-reader gpsMinDistance="5"></a-camera>
 
       <a-camera gps-camera rotation-reader gpsMinDistance="5"></a-camera>
     </a-scene>

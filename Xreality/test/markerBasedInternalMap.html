@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script>
+      AFRAME.registerComponent('markerhandler', {
+        init: function () {
+          var marker = this.el;
+          var barcodeValue = parseInt(marker.getAttribute('value')); // Convert value to integer
+
+          marker.addEventListener('markerFound', function () {
+            console.log("Marker Found! Barcode Value: " + barcodeValue);
+
+            // Perform different actions based on barcode value
+            switch (barcodeValue) {
+              case 7:
+              alert("Scanned barcode 7! Redirecting...");
+              var textEntity = document.createElement('a-text'); // Create a new a-text element
+                textEntity.setAttribute('id', 'weather-ar-text');
+                textEntity.setAttribute('value', 'Fetching Weather...');
+                textEntity.setAttribute('color', 'yellow');
+                textEntity.setAttribute('align', 'center');
+                textEntity.setAttribute('width', '6');
+                textEntity.setAttribute('position', '0 1.5 -3');
+                textEntity.setAttribute('look-at', '#camera'); // Ensure it faces the camera
+                scene.appendChild(textEntity);
+                break;
+              case 8:
+                alert("Scanned barcode 8! Redirecting...");
+                window.location.href = 'https://www.example.com/page2';
+                break;
+              case 9:
+                alert("Scanned barcode 9! Redirecting...");
+                window.location.href = 'https://www.example.com/page3';
+                break;
+              default:
+                alert("Unknown barcode scanned.");
+            }
+          });
+
+          marker.addEventListener('markerLost', function () {
+            console.log("Marker Lost!");
+          });
+        }
+      });
+    </script>
+</head>
+<body style="margin: 0px; overflow: hidden;">
+    <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 4x4;">
+        
+        <a-marker markerhandler type="barcode" value="7">
+        </a-marker>
+
+        <a-marker markerhandler type="barcode" value="8">
+            <a-sphere position="0 0.5 0" color="red"></a-sphere>
+        </a-marker>
+
+        <a-marker markerhandler type="barcode" value="9">
+        </a-marker>
+
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>

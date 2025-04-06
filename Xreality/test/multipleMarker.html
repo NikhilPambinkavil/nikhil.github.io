@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>AR Barcode Markers</title>
+
+    <!-- Latest A-Frame -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+    <!-- Updated AR.js -->
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 4x4;">
+        
+        <!-- Barcode 7 Marker: Shows a Yellow Box -->
+        <a-marker type="barcode" value="7">
+            <a-text value="Library &\nMain Lecture Hall" color="red" position="-2 1 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-text value="Lab" color="blue" position="1 1 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" material="color: red" 
+            position="-2.5 1 0" rotation="0 0 90"></a-entity> <!-- Left Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" material="color: blue" 
+            position="2 1 0" rotation="0 0 -90"></a-entity> <!-- Right Arrow -->
+        </a-marker>
+
+        <a-marker type="barcode" value="8">
+            <a-text value="Library" color="red" position="-0.5 1 .5" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-text value="Main Lecture Hall" color="blue" position="-1.5 1 -0.5" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <!-- Up Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" 
+                    material="color: blue" position="0 1 -1" rotation="-90 0 0"></a-entity>
+            <!-- Down Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" 
+                    material="color: red" position="0 1 1" rotation="90 0 0"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="9">
+            <a-text value="Reading Room" color="yellow" position="-1 -1 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-text value="Office" color="green" position="-1 1 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <!-- Top Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" 
+                    material="color: green" position="0 2 0" rotation="0 0 0"></a-entity>
+            <!-- Bottom Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" 
+                    material="color: yellow" position="0 -2 0" rotation="180 0 0"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="10">
+            <a-text value="Library &\nMain Lecture Hall" color="red" position="-2 1 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-text value="Lab" color="blue" position="1 1 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-text value="Reading Room" color="yellow" position="-1 -1 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-text value="Office" color="green" position="-1 2 0" scale="1.5 1.5 1.5" rotation="-90 0 0"></a-text>
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" material="color: red" 
+            position="-2.5 1 0" rotation="0 0 90"></a-entity> <!-- Left Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" material="color: blue" 
+            position="2 1 0" rotation="0 0 -90"></a-entity> <!-- Right Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" 
+            material="color: green" position="0 2.5 0" rotation="0 0 0"></a-entity> <!-- Top Arrow -->
+            <a-entity geometry="primitive: cone; height: 0.5; radiusBottom: 0.2; radiusTop: 0" 
+                    material="color: yellow" position="0 -1.5 0" rotation="180 0 0"></a-entity> <!-- Bottom Arrow -->
+        </a-marker>
+
+        <!-- Camera Entity -->
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>

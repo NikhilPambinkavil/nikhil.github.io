@@ -13,25 +13,24 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-    <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
+      <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
 
-    <!-- Grouping Text and GLTF Model -->
-    <a-entity gps-entity-place="latitude: 53.2278412; longitude: -4.1302649" scale="1 1 1">
-        <!-- 3D Model -->
-        <a-entity gltf-model="https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/tools/scene.gltf"
-                  position="0 0 0"
-                  scale="1 1 1">
-        </a-entity>
+      <!-- Grouping Text and GLTF Model -->
+      <a-entity gps-new-entity-place="latitude: 53.2278412; longitude: -4.1302649" scale="1 1 1">
+          <!-- 3D Model -->
+          <a-entity gltf-model="https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/tools/scene.gltf"
+                    position="0 0 0"
+                    scale="1 1 1">
+          </a-entity>
 
-        <!-- Text Above the Model -->
-        <a-text value="Dean Street" 
-                position="0 2 0" 
-                align="center" 
-                color="white" 
-                scale="2 2 2">
-        </a-text>
-    </a-entity>
-</a-scene>
-
+          <!-- Text Above the Model -->
+          <a-text value="Dean Street" 
+                  position="0 2 0" 
+                  align="center" 
+                  color="white" 
+                  scale="2 2 2">
+          </a-text>
+      </a-entity>
+    </a-scene>
   </body>
 </html>

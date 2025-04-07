@@ -49,7 +49,7 @@ function renderPlaces(places) {
 
         let model = document.createElement('a-entity');
         model.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lng};`);
-        model.setAttribute('gltf-model', 'https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/tools/scene.gltf');
+        model.setAttribute('gltf-model', 'https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/tools/map_location_3d.glb');
         model.setAttribute('rotation', '0 180 0');
         model.setAttribute('scale', '0.5 0.5 0.5');
 

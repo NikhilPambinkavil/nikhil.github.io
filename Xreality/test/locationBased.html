@@ -13,19 +13,19 @@
   <body>
     <a-scene
       vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true; log: true;"
     >
       <!-- Camera for GPS Tracking -->
       <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
 
       <!-- Grouping Text and 3D Model -->
       <a-entity gps-entity-place="latitude: 53.2300650; longitude: -4.1212611" scale="1 1 1">
-          <!-- 3D Model with Event Listener -->
-          <a-entity gltf-model="https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/tools/scene.gltf"
+          <!-- 3D Model with Debugging -->
+          <a-entity id="model"
+                    gltf-model="https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/tools/scene.gltf"
                     position="0 0 0"
                     scale="1 1 1"
-                    animation-mixer
-                    event-set__loaded="_event: loaded; visible: true;">
+                    animation-mixer>
           </a-entity>
 
           <!-- Text Above the Model -->
@@ -38,5 +38,16 @@
           </a-text>
       </a-entity>
     </a-scene>
+
+    <script>
+      // Debugging: Check if model loads correctly
+      document.querySelector("#model").addEventListener("model-loaded", () => {
+          console.log("✅ GLTF Model Loaded Successfully!");
+      });
+
+      document.querySelector("#model").addEventListener("error", (e) => {
+          console.error("❌ Model Load Error:", e);
+      });
+    </script>
   </body>
 </html>

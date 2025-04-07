@@ -25,6 +25,10 @@ function staticLoadPlaces() {
             name: 'pl4.5',
             location: { lat: 53.2278414, lng: -4.1303702 }
         },
+        {
+            name: 'pl4.5',
+            location: { lat: 53.2300650, lng: -4.1212611 }
+        },
     ];
 }
 

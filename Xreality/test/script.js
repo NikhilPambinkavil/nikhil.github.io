@@ -12,6 +12,27 @@ function staticLoadPlaces() {
                lng: -4.1302649,
            }
        },
+       {
+        name: 'pointio',
+        location: {
+            lat: 53.2277804,
+            lng: -4.1302079,
+        }
+       },
+       {
+        name: 'pl4',
+        location: {
+            lat: 53.2277437,
+            lng: -4.1302056,
+        }
+        },
+        {
+            name: 'pl4.5',
+            location: {
+                lat: 53.2278414,
+                lng: -4.1303702,
+            }
+        },
    ];
 }
 

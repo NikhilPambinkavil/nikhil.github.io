@@ -54,8 +54,12 @@
         scale="30 30 30"
         gps-entity-place="latitude: 53.2309262; longitude: -4.1303176;"
       ></a-text>
-      
-      <a-camera id='gps-camera' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5'> </a-camera>
+
+      <a-camera gps-camera="minDistance: 10;" 
+        rotation-reader 
+        look-controls-enabled="false" 
+        arjs-look-controls="smoothingFactor: 0.1">
+      </a-camera>
     </a-scene>
   </body>
 </html>

@@ -14,17 +14,10 @@
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
       <a-text
-        value="CSE Library"
+        value="CSE Department"
         look-at="[gps-camera]"
         scale="10 10 10"
         gps-entity-place="latitude: 53.2298992; longitude: -4.1240898;"
-      ></a-text>
-
-      <a-text
-        value="CSE Reading room"
-        look-at="[gps-camera]"
-        scale="10 10 10"
-        gps-entity-place="latitude: 53.2298561; longitude: -4.1240808;"
       ></a-text>
 
       <a-text
@@ -54,7 +47,7 @@
         scale="10 10 10"
         gps-entity-place="latitude: 53.2309262; longitude: -4.1303176;"
       ></a-text>
-      <a-camera gps-camera rotation-reader> </a-camera>
+      <a-camera gps-camera="minDistance: 5;" rotation-reader look-controls-enabled="false" arjs-look-controls="smoothingFactor: 0.1">
     </a-scene>
   </body>
 </html>

@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GeoAR.js demo</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  </head>
+
+  <body>
+    <a-scene
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    >
+      <a-text
+        value="CSE Library"
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        gps-entity-place="latitude: 53.2298992; longitude: -4.1240898;"
+      ></a-text>
+
+      <a-text
+        value="CSE Reading room"
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        gps-entity-place="latitude: 53.2298561; longitude: -4.1240808;"
+      ></a-text>
+
+      <a-text
+        value="Pontio"
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        gps-entity-place="latitude: 53.2275353; longitude: -4.1296356;"
+      ></a-text>
+
+      <a-text
+        value="Dean Street"
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        gps-entity-place="latitude: 53.2301593; longitude: -4.1255261;"
+      ></a-text>
+
+      <a-text
+        value="Main arts"
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        gps-entity-place="latitude: 53.2291875; longitude: -4.1303501;"
+      ></a-text>
+
+      <a-text
+        value="School of media"
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        gps-entity-place="latitude: 53.2309262; longitude: -4.1303176;"
+      ></a-text>
+      <a-camera gps-camera rotation-reader> </a-camera>
+    </a-scene>
+  </body>
+</html>

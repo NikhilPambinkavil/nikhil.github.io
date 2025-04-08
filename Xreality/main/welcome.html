@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Navigation</title>
+
+    <script>
+        function fetchWeather(lat, lon) {
+            const apiKey = "a523a78d6c354e69afd181348251103";
+            const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const tempC = data.current.temp_c;
+                    const condition = data.current.condition.text;
+                    const locationName = data.location.name;
+                    document.getElementById("weather-info").innerHTML = 
+                        `${locationName} - ${tempC}°C, ${condition}`;
+                })
+                .catch(error => {
+                    console.error("Error fetching weather data:", error);
+                    document.getElementById("weather-info").innerHTML = 
+                        "Weather Data Unavailable";
+                });
+        }
+
+        // ✅ Get User's Current Location
+        function getLocationAndFetchWeather() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        fetchWeather(lat, lon);
+                    },
+                    (error) => {
+                        console.error("Error getting location:", error);
+                        document.getElementById("weather-info").innerHTML = 
+                            "Location Unavailable";
+                    }
+                );
+            } else {
+                console.error("Geolocation is not supported by this browser.");
+                document.getElementById("weather-info").innerHTML = 
+                    "Geolocation Not Supported";
+            }
+        }
+
+        // ✅ Fetch Weather on Page Load
+        window.onload = getLocationAndFetchWeather;
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
+            text-align: center;
+            background: #003366;
+            color: white;
+            padding: 15px;
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Bangor University Navigation Portal</h1>
+        <p id="weather-info">Fetching Weather...</p>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to Our University</h2>
+            <p>Explore the campus and find your way easily.</p>
+        </section>
+        
+        <section id="ar-internal-campus-map">
+            <h2>Internal AR Map</h2>
+            <p>Experience various rooms AR Map in each building.</p>
+            <a href="https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/main/multipleMarker.html" target="_blank">View Internal AR Map</a>
+        </section>
+
+        <section id="ar-external-campus-map">
+            <h2>External AR Map</h2>
+            <p>Explore various departments and faculties in AR view</p>
+            <a href="https://nikhilpambinkavil.github.io/nikhil.github.io/Xreality/main/indexGPS.html" target="_blank">View External AR Map</a>
+        </section>
+        
+        <section id="campus-map">
+            <h2>External Map</h2>
+            <p>Explore various departments and faculties.</p>
+            <a href="https://www.bangor.ac.uk/campusmap" target="_blank">View Campus Map</a>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Reach out for assistance.</p>
+            <p>Email: hr@bangor.ac.uk</p>
+            <p>Phone: +44 1248 351 151</p>
+        </section>
+    </main>
+</body>
+</html>
